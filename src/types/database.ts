@@ -507,7 +507,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_user_role: {
+        Args: { org_id: string }
+        Returns: Database["public"]["Enums"]["membership_role"]
+      }
+      has_organization_role: {
+        Args: {
+          org_id: string
+          required_role: Database["public"]["Enums"]["membership_role"]
+        }
+        Returns: boolean
+      }
+      is_organization_member: { Args: { org_id: string }; Returns: boolean }
     }
     Enums: {
       budget_period: "monthly" | "quarterly" | "yearly"
